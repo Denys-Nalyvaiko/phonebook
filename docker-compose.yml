@@ -1,0 +1,23 @@
+version: "3.5"
+
+services:
+  server:
+    build:
+      context: ./server
+    env_file:
+      - ./server/.env.development
+    ports:
+      - 3001:3001
+    volumes:
+      - ./server/:/app
+      - /app/node_modules
+  client:
+    build:
+      context: ./client
+    env_file:
+      - ./client/.env.development
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client/:/app
+      - /app/node_modules
