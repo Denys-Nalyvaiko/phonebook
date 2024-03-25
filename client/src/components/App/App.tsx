@@ -1,11 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import axios from 'axios';
+import reactLogo from '../../assets/react.svg';
+import viteLogo from '/vite.svg';
+import '../../App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
+  // ? TEST
+  const [response, setResponse] = useState(null);
+
+  const handleTestingResponse = async () => {
+    const { data } = await axios.get('https://phonebook-utkd.onrender.com/api');
+    console.log(data);
+    setResponse(data.message);
+  };
+
+  // ?
   return (
     <>
       <div>
@@ -28,8 +39,13 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <button type="button" onClick={handleTestingResponse}>
+        Get Response
+      </button>
+      <p>RESPONSE: {response}</p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
