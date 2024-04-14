@@ -4,6 +4,8 @@ import reactLogo from '../../assets/react.svg';
 import viteLogo from '/vite.svg';
 import '../../App.css';
 
+const { BACKEND_URL } = process.env;
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -11,12 +13,12 @@ function App() {
   const [response, setResponse] = useState(null);
 
   const handleTestingResponse = async () => {
-    const { data } = await axios.get('https://phonebook-utkd.onrender.com/api');
+    const { data } = await axios.get(BACKEND_URL ?? 'http://localhost:3001');
     console.log(data);
     setResponse(data.message);
   };
-
   // ?
+
   return (
     <>
       <div>
