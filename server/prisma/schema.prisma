@@ -35,3 +35,10 @@ model Contact {
 
   @@map("contacts")
 }
+
+model Token {
+  id           Int    @id @default(autoincrement())
+  refreshToken String @db.VarChar(255)
+
+  @@map("tokens")
+}
